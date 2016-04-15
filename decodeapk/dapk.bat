@@ -1,18 +1,20 @@
+:: apk tool path:http://ibotpeaches.github.io/Apktool/install/
 set tgt_dir=%~n1
 
 rd /s/q %tgt_dir%
 
-java -jar "apktool1.5.2\apktool.jar" d %1
+java -jar  -Duser.language=en "apktool2.1.0\apktool_2.1.0.jar" d %1
 
 rd /s/q %tgt_dir%\smali
 del %tgt_dir%\apktool.yml
 
 
-"C:\Program Files\WinRAR\WinRAR.exe" e %1 classes.dex -y
-call dex2jar-0.0.9.15\dex2jar classes.dex
+"D:\Program Files\2345Soft\HaoZip\HaoZipC.exe" e %1 classes.dex -y
+call dex2jar-2.0\d2j-dex2jar classes.dex
 
-copy classes_dex2jar.jar "%tgt_dir%"
+copy classes-dex2jar.jar "%tgt_dir%"
 
-del classes.dex classes_dex2jar.jar
+del classes.dex classes-dex2jar.jar
 
-jd-gui "%tgt_dir%\classes_dex2jar.jar"
+jd-gui "%tgt_dir%\classes-dex2jar.jar"
+
