@@ -3,13 +3,15 @@ set tgt_dir=%~n1
 
 rd /s/q %tgt_dir%
 
-java -jar  -Duser.language=en "apktool2.1.0\apktool_2.1.0.jar" d %1
+set ver=2.3.3
+
+java -jar  -Duser.language=en "apktool_%ver%\apktool_%ver%.jar" d %1
 
 rd /s/q %tgt_dir%\smali
 del %tgt_dir%\apktool.yml
 
 
-"D:\Program Files\2345Soft\HaoZip\HaoZipC.exe" e %1 classes.dex -y
+"D:\Program Files\7-Zip\7z.exe" e %1 classes.dex -y
 call dex2jar-2.0\d2j-dex2jar classes.dex
 
 copy classes-dex2jar.jar "%tgt_dir%"
